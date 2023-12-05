@@ -1,0 +1,22 @@
+.focus-container {
+    padding: 20px;
+  }
+  
+  .text-box {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+  
+  .submit-button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .long-text-box {
+    width: 100%; /* Make the third text box 100% wide */
+    padding: 8px;
+    margin-bottom: 10px;
+  }

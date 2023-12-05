@@ -1,0 +1,39 @@
+.nav-cl{
+    flex-grow: 2;
+}
+
+.nav-ed{
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.nav-ex{
+    height: 100px;
+}
+
+
+.spacer-2{
+    display: flex;
+}
+
+.btn-ed{
+    border-radius: 60px !important;
+}
+
+.spacer-1{
+    margin-right: 35px;
+}
+
+
+.btn-ed{
+    border-radius: 20px;
+    /* background: purple !important; */
+}
+
+.tx-pos{
+    margin-left: 10px;
+    color: rgb(195, 195, 170) !important;
+    font-weight: 800;
+    /* background-color: ; */
+}
+

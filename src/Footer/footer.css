@@ -1,0 +1,17 @@
+.footer-d{
+    background-color: #e7ecf1; 
+    border-top: 1px solid #e7e7e7; 
+    text-align: center  ; 
+    justify-content: center;
+    display: flex;
+    padding: 30px ; 
+    position: absolute; 
+    bottom: 0; 
+    width: 100%; 
+
+}
+
+
+.btn-supp{
+    border-radius: 32px;
+  }
