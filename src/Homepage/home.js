@@ -20,6 +20,8 @@ function HomePage(){
       domains: domains,
     }
 
+    // console.log(`${domains} check here`)
+
     try {
       const response = await fetch('http://192.168.0.2:3000/api/links', {
         method: 'POST',
@@ -107,7 +109,7 @@ function HomePage(){
                         />
                       </div>
                   </div>}
-                      <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={handleSubmitLink}>
+                      <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={(event)=>{event.preventDefault(); handleSubmitLink(e.target.value) }}>
                         <b>Submit</b>
                         </button>
                       </form>
