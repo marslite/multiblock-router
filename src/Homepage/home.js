@@ -15,9 +15,11 @@ function HomePage(){
 
   const handleSubmitLink = async (event) => {
     event.preventDefault();
+    // console.log(TESST)
+    handleSubmit(event)
 
     const dataToT = {
-      domains: domains,
+      domains: domains
     }
 
     // console.log(`${domains} check here`)
@@ -105,11 +107,12 @@ function HomePage(){
                           onChange={handleFileChange} 
                           accept=".txt"
                           disabled={domainOne !== ''}
+
                           
                         />
                       </div>
                   </div>}
-                      <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={(event)=>{event.preventDefault(); handleSubmitLink(e.target.value) }}>
+                      <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={(event)=>{ handleSubmitLink(event)  }}>
                         <b>Submit</b>
                         </button>
                       </form>
