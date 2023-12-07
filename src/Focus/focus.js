@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Footer from "../Footer/footer";
 import './index.css'; // Import the CSS file for styling
 
-function Focus(){
+function Focus() {
   const [textBox1Value, setTextBox1Value] = useState('');
   const [textBox2Value, setTextBox2Value] = useState('');
   const [textBox3Value, setTextBox3Value] = useState('');
@@ -36,9 +36,11 @@ function Focus(){
       startingTime: startingTime,
       endingTime: endingTime
     }
+    console.log(dataToT);
 
-    try{
-      const response = await fetch('http://localhost:3000/api/focus-model/',{
+    try {
+      const response = await fetch('http://localhost:3000/api/focus-model/', {
+        method: 'POST', // Specify the method as POST
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
@@ -46,13 +48,13 @@ function Focus(){
         },
         body: JSON.stringify(dataToT),
       });
-      if(!response.ok){
+      if (!response.ok) {
         throw new Error(`Where you expecting somethong: ${response.status}`)
 
       }
 
-      
-    }catch(error){
+
+    } catch (error) {
       console.error("Error in sending data:", error);
     }
 
@@ -61,7 +63,7 @@ function Focus(){
 
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Check if both time values are in the correct format before submitting
     if (/^\d{2}:\d{2}$/.test(textBox1Value) && /^\d{2}:\d{2}$/.test(textBox2Value)) {
       // Extract hours and minutes from the time values
@@ -102,12 +104,11 @@ function Focus(){
 
           // Build and return an array of JSON objects
           const resultArray = parsedWebsites.map(parsedWebsite => ({
-            parsedWebsites: parsedWebsite,
-            textBox1Value: textBox1Value,
-            textBox2Value: textBox2Value,
-            startTime: startingTime,
-            endingTime: endingTime,
-
+            domainName: parsedWebsite,
+            startTime: textBox1Value,
+            endTime: textBox2Value,
+            // startTime: startingTime,
+            // endingTime: endingTime,
 
           }));
 
@@ -118,9 +119,34 @@ function Focus(){
           console.log('Result Array:', resultArray);
 
           setWebsitesArray(parsedWebsites);
-          let testTimeCount = (endMinutes-startMinutes);
+          let testTimeCount = (endMinutes - startMinutes);
           //In case we need the minutes cast
           console.log(testTimeCount, "Checking here the time control")
+
+          try {
+            const response = await fetch('http://localhost:3000/api/focus-model/', {
+              method: 'POST',
+              mode: 'cors',
+              headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+              },
+              body: JSON.stringify(resultArray),
+            });
+
+            if (!response.ok) {
+              throw new Error(`Server returned an error: ${response.status} ${response.statusText}`);
+            }
+
+            // Continue with your logic for a successful response if needed
+
+          } catch (error) {
+            console.error('Error in sending data:', error.message);
+          }
+
+
+
+
 
           setErrorMessage(''); // Clear any previous error message
         } else {
@@ -171,7 +197,7 @@ function Focus(){
 
       {/* Submit button */}
       <button onClick={handleSubmit} className="submit-button">Submit</button>
-      <button onClick={handleSubmitLink} className="btn btn-danger wt-100">Upload</button>
+      {/* <button onClick={handleSubmitLink} className="btn btn-danger wt-100">Upload</button> */}
 
       {/* Display error message, if any */}
       {errorMessage && <p className="error-message">{errorMessage}</p>}

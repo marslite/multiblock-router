@@ -6,6 +6,7 @@ import Footer from '../Footer/footer';
 
 function HomePage(){
   const [domainOne, setDomainOne] = useState('');
+  const [websiteArray, setWebsiteArray] = useState([]);
   // const [domainTwo, setDomainTwo] = useState('');
   const [file, setFile] = useState(null);
   const [domains, setDomains] = useState([]);
@@ -13,56 +14,67 @@ function HomePage(){
   // const domains
   let canFileUpload = false;
 
-  const handleSubmitLink = async (event) => {
-    event.preventDefault();
-    // console.log(TESST)
-    handleSubmit(event)
+  // const handleSubmitLink = async (event) => {
+  //   event.preventDefault();
+  //   // console.log(TESST)
+  //   handleSubmit(event)
 
-    const dataToT = {
-      domains: domains
-    }
+  //   const dataToT = {
+  //     websiteArray: websiteArray,
+  //     domains: domains
+  //   }
 
-    // console.log(`${domains} check here`)
+  //   // console.log(`${domains} check here`)
 
-    try {
-      const response = await fetch('http://192.168.0.2:3000/api/links', {
-        method: 'POST',
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(dataToT),
-      });
+  //   try {
+  //     const response = await fetch('http://192.168.0.2:3000/api/links', {
+  //       method: 'POST',
+  //       mode: "cors",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "Access-Control-Allow-Origin": "*",
+  //       },
+  //       body: JSON.stringify(dataToT),
+  //     });
 
-      if(!response.ok){
-        throw new Error(`Where you expecting somethoing? ${response.status} `)
-      }
+  //     if(!response.ok){
+  //       throw new Error(`Where you expecting somethoing? ${response.status} `)
+  //     }
 
-    } catch (error) {
-      console.error("Error in sending data:", error)
-    }
+  //   } catch (error) {
+  //     console.error("Error in sending data:", error)
+  //   }
 
 
-    setDomainOne('');
+  //   setDomainOne('');
 
-  }
+  // }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
+    // event.preventDefault();
+    let updateDomains = [...domains]
 
     if(domainOne !== ''){
       //Storing all the submitted domains inside domains[]
       const domainOneRefined = domainOne.toLowerCase();
       const conformURL = domainOneRefined.replace(/^https?:\/\//, '').replace(/^www\./,'').replace(
         '/','').toLowerCase();
-      setDomains([...domains, conformURL]);
+        updateDomains = [...updateDomains, conformURL];
+        
+      setDomains(updateDomains);
     }
 
-    console.log(domains, "Current stored domains");
+    const parsedWbs = [...updateDomains]
+    setWebsiteArray(parsedWbs);
+
+    const finalWebArrays = parsedWbs.map(web => ({
+      domainName: web,
+    }))
+
+    console.log("Final Result: ", finalWebArrays);
+
 
     setDomainOne('');
-    setFile(null)
   };
 
 
@@ -80,7 +92,7 @@ function HomePage(){
 
 
                       <h1>Router App - Domain Blacklist</h1>
-                      <form onSubmit={handleSubmit}>
+                      {/* <form onSubmit={handleSubmit}> */}
                       <div className="input-group">
                         <label>Domain 1:</label>
                         <input 
@@ -112,10 +124,11 @@ function HomePage(){
                         />
                       </div>
                   </div>}
-                      <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={(event)=>{ handleSubmitLink(event)  }}>
+                      {/* <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={(event)=>{ handleSubmitLink(event)  }}> */}
+                      <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={ handleSubmit}>
                         <b>Submit</b>
                         </button>
-                      </form>
+                      {/* </form> */}
 
                       </div>
 
