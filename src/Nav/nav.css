@@ -27,13 +27,18 @@
 
 .btn-ed{
     border-radius: 20px;
+    color: aqua !important;
     /* background: purple !important; */
 }
 
 .tx-pos{
     margin-left: 10px;
-    color: rgb(195, 195, 170) !important;
+    color: rgb(71, 71, 63) !important;
     font-weight: 800;
     /* background-color: ; */
 }
 
+.sp-fc{
+    font-family: 'Pacifico', cursive !important;
+    font-size: xx-large !important;
+}
