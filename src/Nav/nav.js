@@ -39,7 +39,7 @@ function Navbar(){
         <div className="nav-cl">
 
 
-        <nav className="navbar navbar-dark bg-dark nav-ex">
+        {/* <nav className="navbar navbar-dark bg-dark nav-ex">
             <a className="navbar-brand btn " href="#">Multiblock</a>
             <button className="btn btn-ed" style={{"background":"purple"}} >
             <a className="navbar-brand tx-pos " href="#/focus">Focus mode</a>
@@ -53,17 +53,23 @@ function Navbar(){
             <a className="navbar-brand tx-pos " onClick={handleParentalControl}>Parent Control</a>
             </button>
 
+        </nav>  */}
 
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                {/* <a class="navbar-brand">Navbar</a> */}
 
-        {/* <span className="spacer-1">
-            <form class="form-inline my-2 my-lg-0 spacer-2">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search"/>
-            <button class="btn btn-warning btn-ed" type="submit"> <b>Search</b></button>
-            </form>
-        </span> */}
+                <a className="navbar-brand btn " href="#">Multiblock</a>
+                <button className="btn btn-ed" style={{"background":"purple"}} >
+                     <a className="navbar-brand tx-pos " href="#/focus">Focus mode</a>
+                </button>
 
+                <button className="btn btn-ed btn-warning"  >
+                    <a className="navbar-brand tx-pos" href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener nonreferrer" >Admin Panel</a>
+                </button>
 
-        </nav> 
+            </div>
+        </nav>
 
 
         </div>

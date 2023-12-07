@@ -79,27 +79,14 @@ function HomePage(){
       <div className='site-wrapper'>
         <div className='web-wrap'>
         <div className="web-container">
-        <div class="alert alert-danger" role="alert">
-          Ensure the Multiblock router is properly wired to your laptop <a href="#" class="alert-link">FAQs</a>.
-        </div>
+                <div class="alert alert-danger" role="alert">
+                  Ensure the Multiblock router is properly wired to your laptop <a href="#" class="alert-link">FAQs</a>.
+                </div>
 
 
-                    {/* <div className='dom-block'>
-                      <h1>Router App - Domain Blacklist</h1>
+  
 
-                      <div className="input-group">
-                        <label>Domain 1:</label>
-                        <input 
-                          type="text" 
-                          value={domainOne} 
-                          onChange={(e) => setDomainOne(e.target.value)} 
-                          />
-                      </div>
-
-                   </div> */}
-
-
-                   <div class="card">
+                   <div class="card text-bg-secondary ">
                     <div class="card-header">
                       Domain Block
                     </div>
@@ -112,8 +99,8 @@ function HomePage(){
                       <span class="input-group-text" id="inputGroup-sizing-lg">URLs</span>
                         <input type="text" class="form-control form-edit" aria-label="Sizing example input"  aria-describedby="inputGroup-sizing-lg" value={domainOne} onChange={(e) => setDomainOne(e.target.value)} />
                             </div>
-                            <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={ handleSubmit}>
-                        <b>Submit</b>
+                            <button type="submit" className='btn btn-warning mt-2 btn-d' onClick={ handleSubmit}>
+                        <b>Block URL</b>
                         </button>
                         </div>
                       {/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
@@ -124,17 +111,6 @@ function HomePage(){
                    
 
 
-
-    
-
-                      {/* <div className="input-group">
-                        <label>Domain 2:</label>
-                        <input 
-                          type="text" 
-                          value={domainTwo} 
-                          onChange={(e) => setDomainTwo(e.target.value)} 
-                        />
-                      </div> */}
                   {canFileUpload && <div>
 
                       <div className="input-group">
@@ -149,13 +125,9 @@ function HomePage(){
                         />
                       </div>
                   </div>}
-                      {/* <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={(event)=>{ handleSubmitLink(event)  }}> */}
-                      {/* <button type="submit" className='btn btn-danger mt-2 btn-d' onClick={ handleSubmit}>
-                        <b>Submit</b>
-                        </button> */}
-                      {/* </form> */}
+    
 
-                      </div>
+               </div>
 
         </div>
         <Footer/>
