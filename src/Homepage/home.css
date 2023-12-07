@@ -2,13 +2,34 @@
 .site-wrapper{
     display: flex;
     flex-direction: column;
+    min-height: 70vh;
+    background: url("./monogram-line-seamless-pattern_8830-622.jpg") center repeat;
+
+
+    background-size: cover;
+    /* background-position: center; */
+
 
     /* min-height: 100vh; */
 
 }
 
+.dom-block{
+  height: 16rem;
+  width: 45rem;
+  background: wheat;
+  border: 8px solid blueviolet;
+  border-radius: 20px;
+  border-style: inset;
+  color:wheat;
+  background: linear-gradient(90deg, rgba(66,61,62,1) 0%, rgba(201,169,223,1) 57%, rgba(87,68,43,1) 100%, rgba(108,17,17,1) 100%);
 
 
+}
+
+.form-edit{
+  width: 1px !important;
+}
 
 .web-wrap{
     /* border: solid rebeccapurple; */
