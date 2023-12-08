@@ -124,7 +124,7 @@ function Focus() {
           console.log(testTimeCount, "Checking here the time control")
 
           try {
-            const response = await fetch('http://localhost:3000/api/focus-mode/', {
+            const response = await fetch('http://localhost:3000/api/focus-model/', {
               method: 'POST',
               mode: 'cors',
               headers: {
@@ -139,6 +139,7 @@ function Focus() {
             }
 
             // Continue with your logic for a successful response if needed
+            // Thanks to GPT Clover!
 
           } catch (error) {
             console.error('Error in sending data:', error.message);

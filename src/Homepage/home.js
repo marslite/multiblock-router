@@ -18,57 +18,122 @@ function HomePage() {
         // event.preventDefault();
         let updateDomains = [...domains];
 
+        // if (domainOne !== "") {
+        //     //Storing all the submitted domains inside domains[]
+        //     const domainOneRefined = domainOne.toLowerCase();
+        //     const conformURL = domainOneRefined
+        //         .replace(/^https?:\/\//, "")
+        //         .replace(/^www\./, "")
+        //         .replace("/", "")
+        //         .toLowerCase();
+        //     updateDomains = [...updateDomains, conformURL];
+        //     // updateDomains.push(conformURL);
+
+        //     // setDomains(updateDomains);
+        //     // setDomainOne('');
+                
+        //                 const parsedWbs = [...updateDomains];
+        //                 setWebsiteArray(parsedWbs);
+
+
+                        
+        //                 const finalWebArrays =updateDomains.map((web) => ({web}));
+                        
+        //                 // const finalWebArrays = parsedWbs.map((web) => ({
+        //                     //     web
+        //                     // }));
+                            
+        //                     console.log("Final Result: ", finalWebArrays);
+        //                     console.log("JSON for Final: ", JSON.stringify(finalWebArrays));
+                            
+                            
+                            
+        //                     try {
+        //                         const response = await fetch("http://192.168.0.2:3000/api/links", {
+        //                             method: "POST",
+        //                             mode: "cors",
+        //                             headers: {
+        //                                 "Content-Type": "application/json",
+        //                                 "Access-Control-Allow-Origin": "*",
+        //                             },
+        //                             body: JSON.stringify(finalWebArrays),
+                                    
+        //                         });
+                                
+        //                         setDomainOne("");
+        //                         setDomains([]);
+                                
+        //                         if (!response.ok) {
+        //                             throw new Error(
+        //                                 `That ass-shaped of Anshul forgot to turn on the server`
+        //                                 );
+        //                             }
+                                    
+        //                             setDomainOne("");
+        //                             setDomains([]);
+                                    
+        //                         } catch (error) {
+        //                             console.error(
+        //                                 `Error in sending data, guess you have to watch all these naughty websites ${finalWebArrays.toString}`,
+        //                                 error.message
+        //                                 );
+        //                             }
+                                    
+                                    
+        //                         }
+
+        // setDomains("");
         if (domainOne !== "") {
-            //Storing all the submitted domains inside domains[]
-            const domainOneRefined = domainOne.toLowerCase();
-            const conformURL = domainOneRefined
+            const domainOneRefined = domainOne.toLowerCase()
                 .replace(/^https?:\/\//, "")
                 .replace(/^www\./, "")
-                .replace("/", "")
+                .replace(/\//, "")
                 .toLowerCase();
-            updateDomains = [...updateDomains, conformURL];
 
-            setDomains(updateDomains);
-        }
+            // Update the domains array
+            const newDomains = [...domains, domainOneRefined];
 
-        const parsedWbs = [...updateDomains];
-        setWebsiteArray(parsedWbs);
+            // Create the payload
+            const finalWebArrays = newDomains.map((web) => (web));
 
-        const finalWebArrays = parsedWbs.map((web) => ({
-            domainName: web,
-        }));
 
-        console.log("Final Result: ", finalWebArrays);
+            console.log("Final Result: HERE: ", finalWebArrays);
+            // console.log("JSON for Final: ", newDomains);
+            
+            // Attempt to send the new domains array to the server
+            try {
+                const response = await fetch("http://192.168.0.2:3000/api/links", {
+                    method: "POST",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "http://localhost:3000",
+                    },
+                    body: JSON.stringify(finalWebArrays),
+                });
 
-        setDomainOne("");
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
 
-        try {
-            const response = await fetch("http://192.168.0.2:3000/api/links", {
-                method: "POST",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                },
-                body: JSON.stringify(finalWebArrays),
-            });
+                // If the request was successful, reset the domain input and the domains array
+                setDomainOne("");
+                setDomains([]);
 
-            if (!response.ok) {
-                throw new Error(
-                    `That ass-shaped of Anshul forgot to turn on the server`
-                );
+            } catch (error) {
+                console.error("Error in sending data: ", error);
             }
-        } catch (error) {
-            console.error(
-                `Error in sending data, guess you have to watch all these naughty websites ${finalWebArrays.toString}`,
-                error.message
-            );
         }
-    };
+
+
+    }
+
 
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
     };
+
+
 
     return (
         <div>
@@ -147,3 +212,5 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
