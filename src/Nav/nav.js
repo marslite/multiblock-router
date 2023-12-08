@@ -15,7 +15,7 @@ function Navbar(){
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://192.168.0.2:3000/api/toggle-internet/`, {
+            const response = await fetch('http://localhost:3000/api/toggle-internet/', {
                 mode:"cors",
                 headers:{
                     "Content-Type": "application/json",
