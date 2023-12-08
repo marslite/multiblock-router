@@ -46,7 +46,7 @@ function HomePage(){
 
 
     try {
-      const response = await fetch('http://localhost:3000/api/home', {
+      const response = await fetch('http://localhost:3000/api/links', {
         method: 'POST',
         mode: 'cors',
         headers: {
