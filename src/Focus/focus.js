@@ -130,7 +130,7 @@ function Focus() {
 
                     try {
                         const response = await fetch(
-                            "http://localhost:3000/api/focus-mode/",
+                            "http://192.168.0.2:3000/api/focus-mode/",
                             {
                                 method: "POST",
                                 mode: "cors",
