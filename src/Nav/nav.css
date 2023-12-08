@@ -12,6 +12,12 @@
 }
 
 
+.switch-d{
+    font-family: 'Silkscreen', sans-serif;
+    font-size: large;
+    font-weight:400;
+}
+
 .spacer-2{
     display: flex;
 }

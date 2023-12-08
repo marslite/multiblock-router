@@ -67,6 +67,11 @@ function Navbar(){
                      <a className="navbar-brand tx-pos " href="#/focus">Focus mode 💡</a>
                 </button>
 
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><span className="switch-d ">Deactivate Internet</span></label>
+                </div>
+
                 <button className="btn btn-ed btn-danger"  >
                     <a className="navbar-brand tx-pos" href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener nonreferrer" >Admin Panel ⚙️</a>
                 </button>
