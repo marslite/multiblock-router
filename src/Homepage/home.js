@@ -29,6 +29,7 @@ function HomePage() {
 
             console.log(domainOneArray);
             console.log(domainOne);
+            // console.log('test')
 
             //Storing all the submitted domains inside domains[]    
             // const domainOneRefined = domainOne.toLowerCase();
