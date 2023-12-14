@@ -30,7 +30,6 @@ function HomePage() {
 
             // Adding each processed domain from domainOneArray to updateDomains
     
-            console.log(domainOneArray);
             console.log(domainOne);
             // console.log('test')
 
