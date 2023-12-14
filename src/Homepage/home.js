@@ -34,10 +34,8 @@ function HomePage() {
             // console.log('test')
 
 
-
             setDomains(updateDomains);
-        }
-
+        } 
         const parsedWbs = [...updateDomains];
         setWebsiteArray(parsedWbs);
 
@@ -46,6 +44,7 @@ function HomePage() {
         }));
 
         console.log("Final Result: ", finalWebArrays);
+        // lol
 
         setDomainOne("");
 
