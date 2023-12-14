@@ -19,14 +19,25 @@ function HomePage() {
         let updateDomains = [...domains];
 
         if (domainOne !== "") {
-            //Storing all the submitted domains inside domains[]
-            const domainOneRefined = domainOne.toLowerCase();
-            const conformURL = domainOneRefined
-                .replace(/^https?:\/\//, "")
-                .replace(/^www\./, "")
-                .replace("/", "")
-                .toLowerCase();
-            updateDomains = [...updateDomains, conformURL];
+            // Splitting domainOne into an array and removing 'https://www.' from each element
+            const domainOneArray = domainOne.split(" ").map(domain =>
+                domain.replace(/https:\/\/www\./gi, "").toLowerCase()
+            );
+
+            // Adding each processed domain from domainOneArray to updateDomains
+            updateDomains = [...updateDomains, ...domainOneArray];
+
+            console.log(domainOneArray);
+            console.log(domainOne);
+
+            //Storing all the submitted domains inside domains[]    
+            // const domainOneRefined = domainOne.toLowerCase();
+            // const conformURL = domainOneRefined
+            //     .replace(/^https?:\/\//, "")
+            //     .replace(/^www\./, "")
+            //     .replace("/", "")
+            //     .toLowerCase();
+            // updateDomains = [...updateDomains, conformURL];
 
             setDomains(updateDomains);
         }
