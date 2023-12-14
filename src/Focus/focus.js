@@ -39,7 +39,7 @@ function Focus() {
     console.log(dataToT);
 
     try {
-      const response = await fetch('http://localhost:3000/api/focus-model/', {
+      const response = await fetch('http://localhost:3000/api/focus-mode/', {
         method: 'POST', // Specify the method as POST
         mode: "cors",
         headers: {
